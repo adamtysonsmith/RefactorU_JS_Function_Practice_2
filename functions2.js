@@ -10,6 +10,7 @@ var stringArray = ['Ned','Homer','Lisa','Bart','Marge','Smithers','Mr. Burns'];
 var quote = 'and this is the snack holder where i can put my beverage or, if you will, cupcake.';
 var boolArray = [true, false, false, true, true];
 var falsy = [false, false, false];
+var dupArray = ['String','Array','Number','String','Array','Number'];
 
 
 ///////////////////////////////////////////
@@ -128,7 +129,22 @@ console.log('Or function returns:', or(falsy));
 
 // 10. Write a function called 'unique' which takes an array of strings, and returns a new array consisting of the unique values (no duplicates).
 function unique(arr) {
-    arr.map(function(){
-        
-    });
+    var unqObj = {};
+    var unqArr = [];
+    
+    for (var i = 0; i < arr.length; i++) {
+        // Set the value of each key to the current array item
+        // Set the value of the object keys to null because we won't use them
+        // Since an object must have unique keys, this is how we are deduplicating the data in the array
+        unqObj[arr[i]] = null;
+    }
+    
+    for (var key in unqObj) {
+        // Now just push the unique keys
+        unqArr.push(key);
+    }
+    
+    return unqArr;
 }
+
+console.log('The unique values are:', unique(dupArray));
